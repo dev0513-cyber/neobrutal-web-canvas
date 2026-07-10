@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { NBButton, NBCard, SectionHeader, Tape } from "@/components/nb";
+import { NBCard, Tape } from "@/components/nb";
 import { PageRenderer } from "@/components/content-page";
 import { pageByNum, serviceBySlug, seo, type Practice, type ServiceRef } from "@/data/site";
 
