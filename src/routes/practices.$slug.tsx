@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { NBCard, SectionHeader, Tape } from "@/components/nb";
 import { PageRenderer } from "@/components/content-page";
-import { pageByNum, practiceBySlug, seo } from "@/data/site";
+import { pageByNum, practiceBySlug, seo, type Practice, type ServiceRef } from "@/data/site";
 
 export const Route = createFileRoute("/practices/$slug")({
   head: ({ params }) => {
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/practices/$slug")({
       ],
     };
   },
-  loader: ({ params }) => {
+  loader: ({ params }): { practice: Practice } => {
     const practice = practiceBySlug(params.slug);
     if (!practice) throw notFound();
     return { practice };
@@ -49,7 +49,7 @@ function PracticePage() {
       <section className="mx-auto max-w-7xl px-4 md:px-8 py-16 border-t-[3px] border-brand-ink">
         <SectionHeader label="This Practice" title={`${practice.services.length} Services in ${practice.label}`} />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {practice.services.map((svc, i) => (
+          {practice.services.map((svc: ServiceRef, i: number) => (
             <Link key={svc.slug} to="/services/$slug" params={{ slug: svc.slug }} className="nb-press">
               <NBCard className="p-5 h-full flex flex-col">
                 <Tape className="mb-2">Service 0{i + 1}</Tape>
