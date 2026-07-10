@@ -58,9 +58,13 @@ function ServiceDetail() {
               <Tape className="mb-2">More in {practice.label}</Tape>
               <h2 className="font-display uppercase text-3xl md:text-5xl">Related Services</h2>
             </div>
-            <NBButton to="/practices/$slug" variant="outline">
+            <Link
+              to="/practices/$slug"
+              params={{ slug: practice.slug }}
+              className="inline-flex items-center px-4 py-2 nb-border nb-shadow-sm nb-press font-display uppercase bg-background"
+            >
               Practice Overview →
-            </NBButton>
+            </Link>
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {siblings.map((svc: ServiceRef) => (
