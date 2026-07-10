@@ -84,10 +84,12 @@ export type Practice = {
   slug: string;
   label: string;
   page: number;
-  color: "yellow" | "pink" | "cyan" | "lime";
+  color: PracticeColor;
   tagline: string;
   services: ServiceRef[];
 };
+
+export type PracticeColor = "yellow" | "pink" | "cyan" | "lime";
 
 export const practices: Practice[] = [
   {
